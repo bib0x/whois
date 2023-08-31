@@ -106,7 +106,7 @@ class TestParser(unittest.TestCase):
                     result = str(result)
                 expected = expected_results.get(key)
                 if expected != result:
-                    print("%s \t(%s):\t %s != %s" % (domain, key, result, expected))
+                    print("%s \t(%s):\t XX%sXX != XX%sXX" % (domain, key, result, expected))
                     fail += 1
 
         if fail:
@@ -628,7 +628,7 @@ Hostname:             p.nic.dk
             if isinstance(result, datetime.datetime):
                 result = str(result)
             expected = expected_results.get(key)
-            if expected != result:
+            if str(expected) != str(result):
                 print("%s \t(%s):\t %s != %s" % (domain_name, key, result, expected))
                 fail += 1
         if fail:
