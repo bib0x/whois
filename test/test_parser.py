@@ -106,7 +106,7 @@ class TestParser(unittest.TestCase):
                     result = str(result)
                 expected = expected_results.get(key)
                 if expected != result:
-                    print("%s \t(%s):\t XX%sXX != XX%sXX" % (domain, key, result, expected))
+                    print("%s \t(%s):\t %s != %s" % (domain, key, result, expected))
                     fail += 1
 
         if fail:
@@ -251,7 +251,7 @@ DNSSEC: unsigned
              'billing_phone': '+1.2083895740',
              'billing_postal_code': '83646',
              'billing_state': 'Idaho',
-             'creation_date': datetime.datetime(2017, 12, 16, 5, 37, 20, 801000),
+             'creation_date': str(datetime.datetime(2017, 12, 16, 5, 37, 20, 801000)),
              'domain_id': '325702_nic_ai',
              'domain_name': 'google.ai',
              'name_servers': ['ns3.zdns.google',
@@ -628,7 +628,7 @@ Hostname:             p.nic.dk
             if isinstance(result, datetime.datetime):
                 result = str(result)
             expected = expected_results.get(key)
-            if str(expected) != str(result):
+            if expected != result:
                 print("%s \t(%s):\t %s != %s" % (domain_name, key, result, expected))
                 fail += 1
         if fail:
